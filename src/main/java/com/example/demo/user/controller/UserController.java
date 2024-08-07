@@ -1,6 +1,8 @@
-package com.example.demo.user;
+package com.example.demo.user.controller;
 
 import com.example.demo.common.argumenthandler.Entity;
+import com.example.demo.common.security.UserDetailsImpl;
+import com.example.demo.user.service.UserService;
 import com.example.demo.user.domain.User;
 import com.example.demo.user.dto.SignupRequest;
 import com.example.demo.user.dto.UserDetailResponse;
@@ -10,6 +12,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -34,5 +37,11 @@ public class UserController {
         @PathVariable long userId,
         @Entity(name = "userId") User user) {
         return ResponseEntity.ok(UserDetailResponse.from(user));
+    }
+
+    @GetMapping("/userInfo")
+    public ResponseEntity<String> authenticationTest(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(userDetails.user().getEmail());
     }
 }

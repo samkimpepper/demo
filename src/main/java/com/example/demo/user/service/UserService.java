@@ -1,11 +1,13 @@
-package com.example.demo.user;
+package com.example.demo.user.service;
 
 import com.example.demo.common.error.BusinessException;
 import com.example.demo.common.error.EntityNotFoundException;
 import com.example.demo.common.error.ErrorCode;
+import com.example.demo.user.domain.RoleType;
 import com.example.demo.user.domain.User;
 import com.example.demo.user.dto.SignupRequest;
 import com.example.demo.user.dto.UserDetailResponse;
+import com.example.demo.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +23,7 @@ public class UserService {
             throw new BusinessException(ErrorCode.EMAIL_DUPLICATION);
         }
         User user = request.toEntity();
+        user.setRole(RoleType.USER);
         return userRepository.save(user).getId();
     }
 

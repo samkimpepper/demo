@@ -17,7 +17,16 @@ public enum ErrorCode {
 
     // User
     EMAIL_DUPLICATION(400, "U001", "Email is duplication"),
-    USER_NOT_FOUND(404, "U002", "User not found");
+    USER_NOT_FOUND(404, "U002", "User not found"),
+
+
+    // Auth
+    TOKEN_NOT_FOUND(401, "T001", "Token not found"),
+    EXPIRED_JWT_EXCEPTION(402, "T002", "Expired JWT Token"),
+    MALFORMED_JWT_EXCEPTION(403, "T003", "Invalid JWT Token"),
+    UNSUPPORTED_JWT_EXCEPTION(404, "T004", "Unsupported JWT Token"),
+    ILLEGAL_ARGUMENT_EXCEPTION(405, "T005", "JWT claims string is empty."),
+    SIGNATURE_JWT_EXCEPTION(406, "T006", "Modulated JWT Token");
 
 
     private final int status;

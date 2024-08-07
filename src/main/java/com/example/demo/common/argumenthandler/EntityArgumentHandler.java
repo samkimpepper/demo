@@ -5,7 +5,7 @@ import com.example.demo.common.entity.Archive;
 import com.example.demo.common.error.EntityNotFoundException;
 import com.example.demo.common.error.ErrorCode;
 import com.example.demo.common.extension.NativeWebRequestExtension;
-import com.example.demo.user.UserRepository;
+import com.example.demo.user.repository.UserRepository;
 import com.example.demo.user.domain.User;
 import lombok.experimental.ExtensionMethod;
 import org.springframework.data.jpa.repository.JpaRepository;

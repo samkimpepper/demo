@@ -1,7 +1,6 @@
-package com.example.demo.common.entity;
+package com.example.demo.user.domain;
 
 import com.example.demo.common.BaseEntity;
-import com.example.demo.user.domain.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -35,5 +34,4 @@ public class UserProvider extends BaseEntity {
     @NotNull
     @Column(name = "provider_user_id", nullable = false, length = 100)
     private String providerUserId;
-
 }

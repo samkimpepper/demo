@@ -21,4 +21,12 @@ public class User extends BaseEntity {
     private String email;
 
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ROLE", nullable = false)
+    private RoleType role;
+
+    public void setRole(RoleType role) {
+        this.role = role;
+    }
 }
