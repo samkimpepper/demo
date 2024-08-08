@@ -1,7 +1,9 @@
 package com.example.demo.common.argumenthandler;
 
+import com.example.demo.archive.repository.ArchiveCommentRepository;
 import com.example.demo.archive.repository.ArchiveRepository;
 import com.example.demo.common.entity.Archive;
+import com.example.demo.common.entity.ArchiveComment;
 import com.example.demo.common.error.EntityNotFoundException;
 import com.example.demo.common.error.ErrorCode;
 import com.example.demo.common.extension.NativeWebRequestExtension;
@@ -28,10 +30,12 @@ public class EntityArgumentHandler implements HandlerMethodArgumentResolver {
 
     public EntityArgumentHandler(
             UserRepository userRepository,
-            ArchiveRepository archiveRepository
+            ArchiveRepository archiveRepository,
+            ArchiveCommentRepository archiveCommentRepository
     ) {
         repositories.put(User.class, userRepository);
         repositories.put(Archive.class, archiveRepository);
+        repositories.put(ArchiveComment.class, archiveCommentRepository);
     }
 
     @Override

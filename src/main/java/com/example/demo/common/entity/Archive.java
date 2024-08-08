@@ -40,6 +40,10 @@ public class Archive extends BaseEntity {
     private BigDecimal positionY;
 
     @Size(max = 200)
+    @Column(name = "address", length = 500)
+    private String address;
+
+    @Size(max = 200)
     @Column(name = "name", length = 200)
     private String name;
 

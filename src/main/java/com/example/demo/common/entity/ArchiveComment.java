@@ -5,20 +5,22 @@ import com.example.demo.user.domain.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
+@Builder
 @Table(name = "archive_comments", schema = "test")
 @AttributeOverrides({
         @AttributeOverride(name = "createdAt", column = @Column(name = "created_at", nullable = false)),
         @AttributeOverride(name = "updatedAt", column = @Column(name = "updated_at"))
 })
+@NoArgsConstructor
+@AllArgsConstructor
 public class ArchiveComment extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,6 +47,6 @@ public class ArchiveComment extends BaseEntity {
     private String content;
 
     @OneToMany(mappedBy = "parent")
-    private Set<ArchiveComment> archiveComments = new LinkedHashSet<>();
+    private List<ArchiveComment> subComments = new ArrayList<>();
 
 }
